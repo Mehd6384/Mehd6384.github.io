@@ -1,5 +1,5 @@
 38locale: "en-US"
-title: MoMe # Title of your site
+title: "MoMe" # Title of your site
 url: "http://mehd6384.github.io" # the base hostname & protocol for your site
 baseurl: "" # the subpath of your site, e.g. /blog/
 google_analytics_key: ""
