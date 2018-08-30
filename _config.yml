@@ -1,20 +1,20 @@
 38locale: "en-US"
-title: Strata # Title of your site
+title: MoMe # Title of your site
 url: "http://mehd6384.github.io" # the base hostname & protocol for your site
 baseurl: "" # the subpath of your site, e.g. /blog/
 google_analytics_key: ""
 
 # Default description in social shares for the jekyll-seo-tag gem
-description: > # this means to ignore newlines until "baseurl:"
+description: blablabla # this means to ignore newlines until "baseurl:"
   Write an awesome description for your new site here. You can edit this
   line in _config.yml. It will appear in your document head meta (for
   Google search results) and in your feed.xml site description.
 
 # Author details for the jekyll-seo-tag gem
 author:
-  name: Your Name
-  email: your-email@domain.com
-  twitter: # twitter username without the @ symbol
+  name: Mehdi Mounsif
+  email: mounsif.mehdi@gmail.com
+  twitter: MoMe36806866
 
 # Social details for the jekyll-seo-tag gem
 social:
@@ -41,12 +41,12 @@ webmaster_verifications:
 # CloudCannon
 
 social_icons:
-  - Facebook
-  - Google Plus
-  - Instagram
-  - LinkedIn
-  - Pinterest
-  - Tumblr
+  # - Facebook
+  # - Google Plus
+  # - Instagram
+  # - LinkedIn
+  # - Pinterest
+  # - Tumblr
   - Twitter
-  - YouTube
-  - RSS
+  # - YouTube
+  # - RSS
