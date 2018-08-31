@@ -2,4 +2,23 @@
 layout: post
 ---
 <img src="/images/fulls/02.jpg" class="fit image">
-Hola, la casa de papel esta muy chulo ! 
+Hola, la casa de papel esta muy chulo !
+
+
+```python
+some_code = 0
+
+for _ in mylist:
+  print(my_list)
+
+```
+# Title 1
+
+
+## A second one
+ Here's a formula : \[A = 0\]
+
+ Another one
+```math
+$\frac{1}{2}$
+```

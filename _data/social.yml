@@ -1,8 +1,18 @@
-- name: Facebook
-  link: 'https://www.facebook.com/comfusionllc'
-  social_icon: Facebook
+# - name: Facebook
+#   link: 'https://www.facebook.com/comfusionllc'
+#   social_icon: Facebook
+#   new_window: true
+# - name: RSS
+#   link: '/feed.xml'
+#   social_icon: RSS
+#   new_window: true
+- name: GitHub
+  link: 'https://github.com/Mehd6384'
+  social_icon: Github
   new_window: true
-- name: RSS
-  link: '/feed.xml'
-  social_icon: RSS
+
+
+- name: Twitter
+  link: 'https://twitter.com/MoMe36806866'
+  social_icon: Twitter
   new_window: true
