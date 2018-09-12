@@ -17,6 +17,8 @@ After a few hours of works, here's what I came up with:
 
 [![Smear](https://imgur.com/a/724ywVF)](https://youtu.be/X3LlX-zTCko "Smear effect")
 
+[![Audi R8](http://img.youtube.com/vi/KOxbO0EI4MA/0.jpg)](https://www.youtube.com/watch?v=KOxbO0EI4MA "Audi R8")
+
 The whole scene is rather basic but I was satisfied with the physics aspects.
 
 
