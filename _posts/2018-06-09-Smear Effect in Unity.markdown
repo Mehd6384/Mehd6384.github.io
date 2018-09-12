@@ -37,4 +37,6 @@ The current implementations relies on a custom noise function that may appear he
 
 ## A small demo: 
 
-https://youtu.be/X3LlX-zTCko
+
+
+[![Smear](https://youtu.be/X3LlX-zTCko?t=3)](https://youtu.be/X3LlX-zTCko "Smear effect")
