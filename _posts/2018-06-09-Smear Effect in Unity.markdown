@@ -39,4 +39,4 @@ The current implementations relies on a custom noise function that may appear he
 
 
 
-[![Smear](https://youtu.be/X3LlX-zTCko?t=3)](https://youtu.be/X3LlX-zTCko "Smear effect")
+[![Smear](https://imgur.com/a/724ywVF)](https://youtu.be/X3LlX-zTCko "Smear effect")
