@@ -15,9 +15,7 @@ While browsing Twitter and Reddit, I came across some videos promotting the game
 
 After a few hours of works, here's what I came up with: 
 
-[![Smear](https://imgur.com/a/724ywVF)](https://youtu.be/X3LlX-zTCko "Smear effect")
-
-[![Audi R8](http://img.youtube.com/vi/KOxbO0EI4MA/0.jpg)](https://www.youtube.com/watch?v=KOxbO0EI4MA "Audi R8")
+[![Skating ! ](http://img.youtube.com/vi/kTH7jAw3kyk/0.jpg)](http://www.youtube.com/watch?v=kTH7jAw3kyk "Skating")
 
 The whole scene is rather basic but I was satisfied with the physics aspects.
 
