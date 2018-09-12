@@ -1,7 +1,7 @@
 ---
 layout: post
 ---
-<img src="/images/fulls/02.jpg" class="fit image">
+<img src="/images/smear.jpg" class="fit image">
 
 # Smear effect in Unity 
 
@@ -39,4 +39,6 @@ The current implementations relies on a custom noise function that may appear he
 
 
 
-[![Smear](https://imgur.com/a/724ywVF)](https://youtu.be/X3LlX-zTCko "Smear effect")
+[![Smear](http://img.youtube.com/vi/X3LlX-zTCko/0.jpg)](https://youtu.be/X3LlX-zTCko "Smear effect")
+
+Code is available on [my github.](https://github.com/Mehd6384/Unity/tree/master/SkatingGame)

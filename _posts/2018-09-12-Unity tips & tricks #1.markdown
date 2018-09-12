@@ -1,7 +1,7 @@
 ---
 layout: post
 ---
-<img src="/images/fulls/02.jpg" class="fit image">
+<img src="/images/skate1.jpg" class="fit image">
 
 # GameDev Insights 1: Skating game, the beginning
 
