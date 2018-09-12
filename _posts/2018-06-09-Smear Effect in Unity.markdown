@@ -6,7 +6,7 @@ layout: post
 # Smear effect in Unity 
 
 Recently, I came across a video displaying smear effect in Unreal. Pretty neat stuff, especially when your game has a cartoony side. 
-After looking at some implementations, in particular from Chris Wade (https://github.com/cjacobwade/HelpfulScripts/blob/master/SmearEffect/Smear.shader), I figured out the secret recipe for this effect which lies in the vertex shader
+After looking at some implementations, in particular from [Chris Wade](https://github.com/cjacobwade/HelpfulScripts/blob/master/SmearEffect/Smear.shader), I figured out the secret recipe for this effect which lies in the vertex shader
 
 ## Vertex shader for smear effect 
 
