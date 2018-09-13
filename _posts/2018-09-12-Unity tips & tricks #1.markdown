@@ -1,5 +1,6 @@
 ---
 layout: post
+title = Unity Tips & Tricks #1: Skating game 
 ---
 <img src="/images/skate1.jpg" class="fit image">
 
