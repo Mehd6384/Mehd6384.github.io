@@ -52,13 +52,3 @@ social_icons:
   # - YouTube
   # - RSS
 
-
-defaults:
-  - scope:
-      path: "_posts/Unity"
-    values:
-      type: "unity"
-  - scope:
-      path: "_posts/RL"
-    values:
-      type: "reinforcementL"
