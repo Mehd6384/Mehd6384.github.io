@@ -15,12 +15,26 @@ Last time, I left off I was happy with my new working agent. However I can't sha
 In order to come up with my own, tailored, suitable and working implementation, I decided to follow a specific plan: 
 
 1. Switch the OpenAI implementation relying on Tensorflow to a PyTorch one. So far, the best I've found is [Ilya Kostriskov's](https://github.com/ikostrikov/pytorch-a2c-ppo-acktr)
+1. Given that these implementations are rather general, because designed to work seamlessly with all of gym, RoboSchool, MuJoCo environments and various algorithms, strip it to the bare minimum. 
+1. Once the *lite* version is working, construct an equivalent version with my own means. 
+1. Scale it up. 
 
-* Famous implementations from reseachers are usually designed to be as general as possible 
-* Which is annoying when you're trying to make it fit your specific needs 
-* In the way of making a personal, specific and modular implementation, my first step was to strip the implemtation to its bare minimum 
-* In the translating part, most problems came from hidden in plain sight classes (Monitor, Visdom)
+## Step 1: Getting acquainted with Ilya's work 
 
-* Still to figure out the working part 
+[Ilya Kostriskov's](https://github.com/ikostrikov/pytorch-a2c-ppo-acktr) implementation is really great. It worked out of the box and the agent quickly reached the maximal reward in my custom environement. Annoyingly, the script relies on Visdom for visualizing the reward history. This I plan to change to another plotting library. 
+While stripping the code, I realized that: 
+
+* The implementations borrows heavily to OpenAI's [baselines](https://github.com/openai/baselines). 
+    * In particular, most of the multiprocessing part. This is for parallelizing the environements and having the agent interacting with various versions of it, hence multiplying experiences. Also, I suppose it helps avoiding the agent getting stuck, modifying badly the policy and failing completely. Some kind of early reset. 
+    * Highly important: The whole VecNormalize process and Monitor that scales the rewards, the observations. This is fundamental. The agent is most likely to fail without it
+* It is really important to initialize the policy and the critic with small weights (I had actually figured this out while working on GANs)
+* The rest follows mostly what one can understand reading the paper. 
+
+
+## Step 2: Let's go minimal
+
+My first impulse was to rebuild most of the code. I started from a empty file and progressively worked my way through the `main.py` file, adding modules, functions and others sweets when I judged they were necessary for the lite version. Given the devil's in the details, I obviously missed some elements with led me to a marathon trying to find where were hiding the bugs. I finally reached a running script... which was nothing but good at training agents. 
+
+Gaving up this method I started again from the opposite direction. Using 
 
 
