@@ -1,9 +1,11 @@
 ---
 layout: post
+title: "Road To PPO. Part II"
+category: [MachineLearning, RL]
 ---
 <img src="/images/ppo2.jpg" class="fit image">
 
-# The Road to PPO. Part II: Converting a famous implementation to a simpler one 
+# Curating a famous implementation to a simpler one 
 
 
 * Famous implementations from reseachers are usually designed to be as general as possible 

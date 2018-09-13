@@ -1,9 +1,11 @@
 ---
 layout: post
+title: "Road To PPO. Part I"
+category: [MachineLearning, RL]
 ---
 <img src="/images/ppo1.jpg" class="fit image">
 
-# The Road to PPO. Part I: Using a state-of-the-art implementation 
+# Using a state-of-the-art implementation 
 
 
 * Problem implementing the algo 

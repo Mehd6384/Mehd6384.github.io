@@ -1,9 +1,11 @@
 ---
 layout: post
+title: "Unity Tips & Tricks #2: 2.5D Controller"
+categories: [Unity, Gamedev, Controller]
 ---
 <img src="/images/san.jpg" class="fit image">
 
-# GameDev Insights 2: 2.5D Controller
+# Setting up a controller
 
 Designing my dream controller for a TPS game has proven way more difficult than I intially thought. Sure, it's quite easy to add a collider and a rigidbody to a character and apply forces to move it. But there is no way a raw approach such as this one leads you to a subtle, delicate and awesome controller. A controller that is responsive, that makes you feel the character's explosiveness, strength, without letting it slide, or drift or feel unatural. Of course, reaching such a level of perfection requires **a lot** of polishing, but through this simple prototype, I have uncovered some of the important principles to manage a character. Though I was inspired by the 2D phases in [NierAutomata](https://www.youtube.com/watch?v=gaBUAw0W6bU) I didn't have anything precise in mind designing this prototype. I have sequentially thought of a side runner, Mario-style, a fighting game via *balls*, but so far, I've not implemented any. Anyway, here are my hard-earned 2.5D controller secrets: 
 

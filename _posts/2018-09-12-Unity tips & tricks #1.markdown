@@ -5,7 +5,7 @@ categories: [Unity, skating]
 ---
 <img src="/images/skate1.jpg" class="fit image">
 
-# GameDev Insights 1: Skating game, the beginning
+# Skating game: The Beginning
 
 One of the main incentives for starting this blog was for me to keep a trace of some of the hard-earned insights both in game programming and machine learning. Indeed, I recently found myself fighting with some recurrent problems, having forgotten the solution I came up with in a previous game prototype. In order to increase efficiency and maybe help out some others self-taught game devs, I tought blog posts could be a nice solution !
 
