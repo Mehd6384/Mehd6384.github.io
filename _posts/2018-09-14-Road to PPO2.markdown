@@ -38,4 +38,4 @@ My first impulse was to rebuild most of the code. I started from a empty file an
 Gaving up this method I started again from the opposite direction. Using the full code, I progressively removed the unwanted elements and reached my goal. 
 The results can be found [here](https://github.com/Mehd634). It is a set of scripts destined to run a PPO agent in a continuous environment with low-level perceptions (ie. no images)
 
-
+![My agent's results in my environment](/images/ppomehd.png "PPO's power")
