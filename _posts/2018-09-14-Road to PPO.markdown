@@ -1,7 +1,7 @@
 ---
 layout: post
 ---
-<img src="/images/smear.jpg" class="fit image">
+<img src="/images/ppo2.jpg" class="fit image">
 
 # The Road to PPO. Part II: Converting a famous implementation to a simpler one 
 
