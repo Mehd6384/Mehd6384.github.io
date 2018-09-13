@@ -35,6 +35,7 @@ While stripping the code, I realized that:
 
 My first impulse was to rebuild most of the code. I started from a empty file and progressively worked my way through the `main.py` file, adding modules, functions and others sweets when I judged they were necessary for the lite version. Given the devil's in the details, I obviously missed some elements with led me to a marathon trying to find where were hiding the bugs. I finally reached a running script... which was nothing but good at training agents. 
 
-Gaving up this method I started again from the opposite direction. Using 
+Gaving up this method I started again from the opposite direction. Using the full code, I progressively removed the unwanted elements and reached my goal. 
+The results can be found [here](https://github.com/Mehd634). It is a set of scripts destined to run a PPO agent in a continuous environment with low-level perceptions (ie. no images)
 
 
