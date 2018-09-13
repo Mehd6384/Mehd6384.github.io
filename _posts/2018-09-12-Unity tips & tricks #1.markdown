@@ -1,6 +1,7 @@
 ---
 layout: post
-title = "Unity Tips & Tricks #1: Skating game "
+title: "Unity Tips & Tricks #1: Skating game"
+categories: [Unity, skating]
 ---
 <img src="/images/skate1.jpg" class="fit image">
 
