@@ -8,6 +8,14 @@ category: [MachineLearning, RL]
 # Curating a famous implementation to a simpler one 
 
 
+Last time, I left off I was happy with my new working agent. However I can't shake the guilty feeling of using something that I don't completely master. I don't think it is possible to have control over everything one interacts with, and I suppose there's nothing wrong about it. But still, for various reasons, such as being able to modify on will the agent, have more flexibility, I wanted to work more on the PPO implementation. 
+
+## Objectives 
+
+In order to come up with my own, tailored, suitable and working implementation, I decided to follow a specific plan: 
+
+1. Switch the OpenAI implementation relying on Tensorflow to a PyTorch one. So far, the best I've found is [Ilya Kostriskov's](https://github.com/ikostrikov/pytorch-a2c-ppo-acktr)
+
 * Famous implementations from reseachers are usually designed to be as general as possible 
 * Which is annoying when you're trying to make it fit your specific needs 
 * In the way of making a personal, specific and modular implementation, my first step was to strip the implemtation to its bare minimum 
