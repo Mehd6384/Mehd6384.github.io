@@ -39,3 +39,10 @@ Gaving up this method I started again from the opposite direction. Using the ful
 The results can be found [here](https://github.com/Mehd634). It is a set of scripts destined to run a PPO agent in a continuous environment with low-level perceptions (ie. no images)
 
 ![My agent's results in my environment](/images/ppomehd.png "PPO's power")
+
+## Step 3: Switching Visdom for TensorBoard
+
+I'm not really a fan of Visdom. The animal kept sending me error messages about not mixing floats and None types, though I couldn't find any mention of this in my code. Also, this issue has already been submitted to the relevant github repo. Also, I enjoy TensorBoard smoothness. So, I got rid of Visdom. My current implementation calls a `SummaryWriter`, from `tensorboardX` and registers all the rewards values. Which finally give a much nicer visualisation, in my humble opinion. 
+
+
+![My agent's results in my environment](/images/tb_ppo.png "PPO's power")
