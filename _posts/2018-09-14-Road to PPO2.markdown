@@ -45,4 +45,4 @@ The results can be found [here](https://github.com/Mehd634). It is a set of scri
 I'm not really a fan of Visdom. The animal kept sending me error messages about not mixing floats and None types, though I couldn't find any mention of this in my code. Also, this issue has already been submitted to the relevant github repo. Also, I enjoy TensorBoard smoothness. So, I got rid of Visdom. My current implementation calls a `SummaryWriter`, from `tensorboardX` and registers all the rewards values. Which finally give a much nicer visualisation, in my humble opinion. 
 
 
-![My agent's results in my environment](/images/tb_ppo.png "PPO's power")
+<img src="/images/tb_ppo.png" class="fit image">
