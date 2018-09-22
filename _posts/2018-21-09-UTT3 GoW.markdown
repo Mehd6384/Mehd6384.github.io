@@ -14,7 +14,7 @@ Recently, while browsing on Reddit, I came across [this post](https://www.reddit
 
 I did all the modeling all by myself, using Blender. Given I've recently purchased almighty RetopoFlow 2.0, I didn't follow my old workflow that relied on creating first a **skinned mesh**, sculpting it and then try to skrinkwrap it as well as possible before patching the wholes with manual retopology. RetopoFlow is really awesome and definitely introduces more freedom. 
 
-Here's the finished model before retopoly step: 
+Here's the finished model before retopology step: 
 
 
 Afterwards, with textures from Substance Painter: 
@@ -27,13 +27,40 @@ I also did all the animations by myself. First, I worked with no Leviathan Axe a
 
 # Changing perspective 
 
-Moving to isom 
+My first approach was to go ahead and copy as much as possible the mechanics of the genuine God Of War. But I quickly came to realise that I would very likely get lost. Indeed, managing the combat mechanics, the axe logic, aiming, dodging, impacting, ennemy behaviour, effects was probably too much for a first try. Hence, I thought I'd change my perspective. 
+
+I hence came up with the following idea: change the view point. I basically changed the camera from a TPS behaviour (ie. looking over the character's shoulder) to an isometric setting. 
+
+![Going from TPS to Isometric setting](images/tps_to_isom.png)
+
+This simply allowed me for various simplification while retaining most of my previous code: 
+
+* All the logic behind movement is still effective (rigidbodies movement, computation of direction and so on)
+* The only way to shoot the axe would be forward. Hence, I can focus on shooting, recalling and switching weapon logic. 
 
 # Global setup 
 
 Mettre dessin: 
 
 Inputs to modular to concerned script. Launches animation. Callback to modular that sends it out again 
+
+# Movement insights
+
+While I was working on the skating scene, I was concatenating Quaternions to reach the desired final rotation. In this process, several rotations were involved. 
+
+1. A rotation that transforms the character's up vector to the current ground normal vector 
+1. A rotation to face the current velocity vector, projected on the Y-up normal defined plane. 
+
+I used a method similar to the second item to improve the way the character turn. Here's a method comparaison: 
+
+| Method  |                                                                    Previous                                                                    |                                                                               Current                                                                               |
+|:-------:|:----------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+|  Step I |  Compute direction based on player's input and camera position wtr to character                                                                | Compute direction based on player's input and camera position wtr to character                                                                                      |
+| Step II |  Add force to the player. The force is oriented by the player's forward.   Meanwhile, turn the player (Quaternion.Lerp) to face this direction |  Add force to the player, based on the desired direction.   Rotate the player forwards towards this force.   This allows to use the angle value to blend animations |
+
+
+![Run animation](https://media.giphy.com/media/kKLkIrO0d0b1Y0tmQJ/giphy.gif)
+
 
 # Axe stuff 
 
