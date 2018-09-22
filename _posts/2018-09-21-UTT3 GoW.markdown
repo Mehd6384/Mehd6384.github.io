@@ -16,9 +16,11 @@ I did all the modeling all by myself, using Blender. Given I've recently purchas
 
 Here's the finished model before retopology step: 
 
+![Kratos before retopo](images/kratos1.png)
 
 Afterwards, with textures from Substance Painter: 
 
+![Kratos before retopo](images/kratos_2.png)
 
 # Animating 
 
