@@ -42,9 +42,10 @@ This simply allowed me for various simplification while retaining most of my pre
 
 # Global setup 
 
-Mettre dessin: 
 
-Inputs to modular to concerned script. Launches animation. Callback to modular that sends it out again 
+<p align = "center">
+![Global setup](images/setup.png)
+</p>
 
 # Movement insights
 
@@ -60,9 +61,9 @@ I used a method similar to the second item to improve the way the character turn
 |  Step I |  Compute direction based on player's input and camera position wtr to character                                                                | Compute direction based on player's input and camera position wtr to character                                                                                      |
 | Step II |  Add force to the player. The force is oriented by the player's forward.   Meanwhile, turn the player (Quaternion.Lerp) to face this direction |  Add force to the player, based on the desired direction.   Rotate the player forwards towards this force.   This allows to use the angle value to blend animations |
 
-
+<p align = "center">
 ![Run animation](https://media.giphy.com/media/kKLkIrO0d0b1Y0tmQJ/giphy.gif)
-
+</p>
 
 # Axe stuff 
 
