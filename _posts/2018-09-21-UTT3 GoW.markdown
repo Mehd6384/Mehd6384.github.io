@@ -18,12 +18,12 @@ Here's the finished model before retopology step:
 
 
 <p align="center">
-  <img src="images/kratos1.png"/></p>
+  <img src="/images/kratos1.png"/></p>
 
 Afterwards, with textures from Substance Painter: 
 
 <p align="center">
-  <img src="images/kratos_2.png"/></p>
+  <img src="/images/kratos_2.png"/></p>
 
 # Animating 
 
@@ -37,7 +37,7 @@ My first approach was to go ahead and copy as much as possible the mechanics of 
 I hence came up with the following idea: change the view point. I basically changed the camera from a TPS behaviour (ie. looking over the character's shoulder) to an isometric setting. 
 
 <p align="center">
-  <img src="images/tps_to_isom.png"/></p>
+  <img src="/images/tps_to_isom.png"/></p>
 
 This simply allowed me for various simplification while retaining most of my previous code: 
 
@@ -47,7 +47,7 @@ This simply allowed me for various simplification while retaining most of my pre
 # Global setup 
 
 <p align="center">
-  <img src="images/setup.png"/></p>
+  <img src="/images/setup.png"/></p>
 
 
 # Movement insights
