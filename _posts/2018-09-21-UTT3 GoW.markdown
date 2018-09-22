@@ -3,7 +3,7 @@ layout: post
 title: "Unity Tips & Tricks #3: Kratos Controller Part I"
 categories: [Unity, Gamedev, Controller]
 ---
-<img src="/images/san.jpg" class="fit image">
+<img src="/images/kratos_front.jpg" class="fit image">
 
 # Context 
 
@@ -16,11 +16,14 @@ I did all the modeling all by myself, using Blender. Given I've recently purchas
 
 Here's the finished model before retopology step: 
 
-![Kratos before retopo](images/kratos1.png)
+
+<p align="center">
+  <img src="images/kratos1.png"/></p>
 
 Afterwards, with textures from Substance Painter: 
 
-![Kratos before retopo](images/kratos_2.png)
+<p align="center">
+  <img src="images/kratos_2.png"/></p>
 
 # Animating 
 
@@ -33,7 +36,8 @@ My first approach was to go ahead and copy as much as possible the mechanics of 
 
 I hence came up with the following idea: change the view point. I basically changed the camera from a TPS behaviour (ie. looking over the character's shoulder) to an isometric setting. 
 
-![Going from TPS to Isometric setting](images/tps_to_isom.png)
+<p align="center">
+  <img src="images/tps_to_isom.png"/></p>
 
 This simply allowed me for various simplification while retaining most of my previous code: 
 
