@@ -1,0 +1,42 @@
+---
+layout: post
+title: "Unity Tips & Tricks #3: Kratos Controller Part I"
+categories: [Unity, Gamedev, Controller]
+---
+<img src="/images/san.jpg" class="fit image">
+
+# Context 
+
+Recently, while browsing on Reddit, I came across [this post](https://www.reddit.com/r/Unity3D/comments/979q4i/i_recreated_god_of_war_e3_demo_in_unity/) where someone shows of its God of War demo, made in Unity. The whole thing is nice, and given I'd wanted to give a try myself a recreating some of the God of War mechanics, I decided it was time to give it a go ! 
+
+
+# Modeling/Texturing 
+
+I did all the modeling all by myself, using Blender. Given I've recently purchased almighty RetopoFlow 2.0, I didn't follow my old workflow that relied on creating first a **skinned mesh**, sculpting it and then try to skrinkwrap it as well as possible before patching the wholes with manual retopology. RetopoFlow is really awesome and definitely introduces more freedom. 
+
+Here's the finished model before retopoly step: 
+
+
+Afterwards, with textures from Substance Painter: 
+
+
+# Animating 
+
+I also did all the animations by myself. First, I worked with no Leviathan Axe animation. This means that Kratos's rig was nothing but his own bones. In this setting I made the Idle, Run, Dash, various hits animations, including a headbutt. In parallel, I was setting up the controller, using my previously detailed insights (see my previous post on 2.5D controller). One
+
+
+# Changing perspective 
+
+Moving to isom 
+
+# Global setup 
+
+Mettre dessin: 
+
+Inputs to modular to concerned script. Launches animation. Callback to modular that sends it out again 
+
+# Axe stuff 
+
+* Axe behaviour 
+* Separate rig 
+* Try to go with enums instead of list of bools  
