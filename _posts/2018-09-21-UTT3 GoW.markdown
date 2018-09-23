@@ -25,10 +25,6 @@ Afterwards, with textures from Substance Painter:
 <p align="center">
   <img src="/images/kratos_2.png" class="fit image"/></p>
 
-# Animating 
-
-I also did all the animations by myself. First, I worked with no Leviathan Axe animation. This means that Kratos's rig was nothing but his own bones. In this setting I made the Idle, Run, Dash, various hits animations, including a headbutt. In parallel, I was setting up the controller, using my previously detailed insights (see my previous post on 2.5D controller). One
-
 
 # Changing perspective 
 
@@ -72,6 +68,37 @@ I used a method similar to the second item to improve the way the character turn
 
 # Axe stuff 
 
-* Axe behaviour 
-* Separate rig 
-* Try to go with enums instead of list of bools  
+
+Now, let's cover what has made the last God of War episode so memorable: The Leviathan Axe. My prototype version is currently far from being as efficiant as the one feature in the Santa Monica productio  n, so let's call it the Goldfish Axe for now.
+
+In its current version, the implementation relies on two separate scripts:
+* `GoWAxeControl` that is held by the Kratos character
+* `AxeBehaviour` that belong the the Axe object
+ 
+ 
+My first attempt at this deffered an important axe logic inside of the `GoWAxeControl`, which was unwanted because it mixes data and streams and I actually want my modules to be as autonomous as possibl  e, so that they can be easily changed and tweaked. Thinking about the future here. I'm now going to present the actual version, available here.
+ 
+## Axe Control 
+ 
+This script has no `Update` method, and, as shown in the graph above is mostly controlled by `GoWModular` that calls method based on player's inputs and animation triggers. There's a button to trigger t  he **GetAxe** animation, where Kratos reaches in his back, another button launches the `CallAxe` procedure, where Kratos raises its arm to call the axe. In this case, the animation uses another layer th  at has a mask on the shoulder to hand bones (so I still can walk or run). This is slightly messed up and I will later improve it. Anyway, a rather basic script.
+
+ 
+## Axe Behaviour
+ 
+More magic happens in the other script. Here, I first had to define some offset parameters, in terms of vectors and quaternions. Indeed, because of frame difference, the axe was not positionned as I was   expecting it so, there's that. Also, I decided to use **enums** for this part. Given I was going to deal with axe states, enums are particuluarly suited. I have a grand total of five states
+
+* In hand
+* In back
+* Thrown
+* Stuck
+* Recalled
+ 
+I basically use these to determine the corresponding animation states, the current parent, and they also are useful for updating Kratos's state.
+
+[![Kratos progresses ! ](http://i3.ytimg.com/vi/qppXSUxXk00/hqdefault.jpg)](https://youtu.be/qppXSUxXk00 "Kratos Axe Mechanics")
+
+# Conclusion and TODOs 
+
+Everything is much easier with the right tool. Anyway, next, I'm planning on adding more hits with the axe, so I can quickly get to a point where I can fight ennemies ! Get ready for some troll fight ! Also, I'd like to implement Bezier support for the axe return, so it is more appealing visually. 
+
+ 
