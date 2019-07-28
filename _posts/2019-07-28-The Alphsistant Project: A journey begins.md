@@ -3,7 +3,7 @@ layout: post
 title: "The Alphsistant Project"
 categories: [Alphsistant]
 ---
-<img src="/images/kratos_front.jpg" class="fit image">
+<img src="/images/alphsistant0.png" class="fit image">
 
 # Context 
 
