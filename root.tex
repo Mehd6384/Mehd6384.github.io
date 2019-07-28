@@ -1,0 +1,436 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%2345678901234567890123456789012345678901234567890123456789012345678901234567890
+%        1         2         3         4         5         6         7         8
+
+\documentclass[letterpaper, 10 pt, conference]{ieeeconf}  % Comment this line out if you need a4paper
+
+%\documentclass[a4paper, 10pt, conference]{ieeeconf}      % Use this line for a4 paper
+
+\IEEEoverridecommandlockouts                              % This command is only needed if 
+                                                          % you want to use the \thanks command
+
+\overrideIEEEmargins                                      % Needed to meet printer requirements.
+
+\usepackage{graphicx}
+\usepackage{caption} 
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{tabu}
+%In case you encounter the following error:
+%Error 1010 The PDF file may be corrupt (unable to open PDF file) OR
+%Error 1000 An error occurred while parsing a contents stream. Unable to analyze the PDF file.
+%This is a known problem with pdfLaTeX conversion filter. The file cannot be opened with acrobat reader
+%Please use one of the alternatives below to circumvent this error by uncommenting one or the other
+%\pdfobjcompresslevel=0
+%\pdfminorversion=4
+
+% See the \addtolength command later in the file to balance the column lengths
+% on the last page of the document
+
+% The following packages can be found on http:\\www.ctan.org
+%\usepackage{graphics} % for pdf, bitmapped graphics files
+%\usepackage{epsfig} % for postscript graphics files
+%\usepackage{mathptmx} % assumes new font selection scheme installed
+%\usepackage{times} % assumes new font selection scheme installed
+%\usepackage{amsmath} % assumes amsmath package installed
+%\usepackage{amssymb}  % assumes amsmath package installed
+
+\title{\LARGE \bf
+Universal Notice Networks and their applications 
+}
+
+
+\author{Mehdi Mounsif$^{1}$, Sebastien Lengagne$^{1}$, Benoit Thuilot$^{1}$ and Lounis Adouane$^{1}$% <-this % stops a space
+\thanks{All authors are with Université Clermont Auvergne, CNRS, SIGMA Clermont, Institut Pascal, F-63000 Clermont-Ferrand, France.
+        {\tt\small mehdi.mounsif@uca.fr}}%
+% \thanks{$^{2}$Bernard D. Researcheris with the Department of Electrical Engineering, Wright State University,
+%         Dayton, OH 45435, USA
+%         {\tt\small b.d.researcher@ieee.org}}%
+}
+
+
+\begin{document}
+
+
+
+\maketitle
+\thispagestyle{empty}
+\pagestyle{empty}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{abstract}
+
+Despite greats achievements of learning-based works, these methods are known for their poor sample efficieny. This particular drawback usually means that training agents in simulations is the only viable options, regarding time constraints. However, it is notoriously difficult to tune a world model so that it is accurate enough to account for the real world. Which implies that agents trained on simulation usually perform poorly when placed on in a physical setting. Our method should allow this problem to disappear by ensuring knowledge necessary to solve a task is not interwinded with other modules, which in turns allows for simple knowledge transfer between entities. 
+
+\end{abstract}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{INTRODUCTION}
+
+Reinforcement Learning (RL) methods have, in recent years, been successfully applied to a broad range of complex, high-dimensional and non-linear problems, both in simulation \cite{AtariOneShort}, \cite{PPOAcrobatics}, and in the real world \cite{OpenAIDextrousShort}, \cite{AlphaGOShort}. While an important part of these works rely on model-free techniques, an increasing focus is set on model-based methods, given their higher sample efficiency 
+as well as their ability to plan \cite{WorldModels}, \cite{PlanningChelsea}. However, in both model-based and model-free settings, the final behaviour is critically sensitive to the training distribution and, as a result, performs poorly when placed in an environment with a test distribution too far from the training distribution, which is highly liable to be the case when deploying a model trained on simulation to the real world. Moreover, even when the resulting policy is able to cope up with the intrinsic differences between virtual and physical world, it is usually not possible to transfer this skill to another agent with a different body configuration. The Universal Notice Network, proposed as a proof of concept in 2D tasks in \cite{UNN}, offers a potential solution to this problem. Relying on this approach allows to segment learning between various sub-modules, thus knowledge for solving a task is distinct of control logic. It is then possible to transmit skills for solving this specific task in a plug-and-play fashion between robots with differents configurations. While these configurations can be physically defined, such as different number of joints, segment length and so on, it is also possible to think of them as the differences between the simulated model and the real-world robot, or, in a more pragmatic view between a robot and its decayed version. 
+
+If these robots are tasked with the same assignment, it would be appreciable not having to do training twice and indeed, if skills for solving the task are distincts of those needed for control, then one could simply fine-tune the control part to get the robot to perform again. To sum up, the main contributions of this paper are the following: 
+
+
+ % \textcolor{red}{le comportement obtenu est totalement sensible aux conditions d'entrainement et si la distribution des états en application diffère de celle de l'entrainement, ce qui est le plus souvent le cas lorsqu'on passe de la simulation au monde physique alors les performances sont largement impactées}. The Universal Notice Network, proposed as a proof of concept in 2D tasks in \textcolor{green}{\cite{UNN}}, offers a potential solution to this problem. Relying on this approach allows to segment learning between various sub-modules, thus knowledge for solving a task is distinct of control logic. It is then possible to transmit skills for solving this specific task in a plug-and-play fashion between robots with differents configurations. While these configurations can be physically defined, such as different number of joints, segment length and so on, it is also possible to think of them as the differences between the simulated model and the real-world robot, or between a \textcolor{green}{brand-new, shiny, out-of-the-factory robot and an old veteran of an industrial plant}. 
+
+
+% If these robots are tasked with the same assignment, it would be appreciable not having to do training twice and indeed, if skills for solving the task are distincts of those needed for control, then one could simply fine-tune the control part to get the robot to perform again. [...] To sum up, the main contributions of this paper are the following: 
+
+
+% In these challenging settings, various methods allow to reach human-like to superhuman performances \textcolor{red}{have achieved impressive successes in recent years}, in some cases, displaying highly useful performances in real world settings \cite{OpenAIDextrousShort} to superhuman capabilities (citer Minh) in simulations. And while an important part of these works leverage model-free algorithms, the model-based community also reports \textcolor{green}{awesome results (citer un truc de Chelsea)}. 
+% Model-based RL, while being more sample efficient than model-free methods \textcolor{red}{citer un truc de Berkeley}, suffers from the approximations made whithin the model, hence limiting the agent's final performance. Furthermore, in both model-based and model-free settings, \textcolor{red}{le comportement obtenu est totalement sensible aux conditions d'entrainement et si la distribution des états en application diffère de celle de l'entrainement, ce qui est le plus souvent le cas lorsqu'on passe de la simulation au monde physique alors les performances sont largement impactées}. The Universal Notice Network, proposed as a proof of concept in 2D tasks in \textcolor{green}{\cite{UNN}}, offers a potential solution to this problem. Relying on this approach allows to segment learning between various sub-modules, thus knowledge for solving a task is distinct of control logic. It is then possible to transmit skills for solving this specific task in a plug-and-play fashion between robots with differents configurations. While these configurations can be physically defined, such as different number of joints, segment length and so on, it is also possible to think of them as the differences between the simulated model and the real-world robot, or between a \textcolor{green}{brand-new, shiny, out-of-the-factory robot and an old veteran of an industrial plant}. 
+
+\begin{itemize}
+  \item An extension of the UNN method to 3D environments for manipulation, co-manipulation and hierarchical tasks
+  \item The introduction of a new framework: the Heuristic Curriculum Learning (HCL) that aims to minimize the correlation between the way the agent succeeds in the task and its body configuration
+\end{itemize}
+
+% \uppercase{Pour HCL: Ne pas oublier d'expliquer que l'UNN tire parti de la géométrie de l'agent pour réussir des tâches. Par exemple, dans la comanip de la planche, l'agent s'aide de l'intérieur de son coude pour stabiliser la planche}. 
+
+\section{Method} % (fold)
+\label{sec:method}
+
+
+Machine learning uses gradient descent to optimize the parameters $\theta$ of a model based on a loss function $\mathcal{L}$. Training is usually done with randomly sampled batches from the dataset and the model is usually initialized with random weights, although using certain weights distributions such as \textcolor{green}{\cite{XavierInit}} improves learning speed and final performances. But overall, it is difficult to predict the model's trajectory in the parameters' space during training. In the RL context, this stochasticity is exacerbated, given the fact that the rewards signal depends on the agent's actions, which are themselves sampled from a distribution depending on the model parameters. This inherent \textcolor{red}{chaos} does not necesserely prevent the agent from learning, however, there is no principled method to predict which part of the model are responsible for specific behaviours, at least for straightforward architectures. The UNN approach is designed to tackle specifically this drawback, by ensuring knowledge is held in predetermined areas of the model, as can be seen in Figure \ref{segment_model}. 
+
+
+% we don't know where we start in the parameters' space and we can't really predict in which direction we're going to move (given the stochastic sampling). In the RL context, this stochasticity is exacerbated, given the fact that the rewards signal depends on the agent's actions, which are themselves sampled from a distribution depending on the model parameters. This inherent \textcolor{red}{chaos} does not necesserely prevent the agent from learning, however, there is no principled method to predict which part of the model are responsible for which behaviour, at least for straightforward architectures. The UNN approach is designed to tackle specifically this drawback, by ensuring knowledge is held in predetermined areas of the model, see Figure \ref{segment_model}
+
+
+\begin{figure}
+\centering
+\includegraphics[width=0.45\textwidth]{imgs/seg2.png}
+\caption{Knowledge location in straightforward training setting (left) vs UNN setting(right)}
+\label{segment_model}
+\end{figure}
+
+% The UNN principle can be seen as a hybrid-method between model-free and model-based approaches. It is even possible to consider that the UNN process \textbf{gradually transforms the model-free problem into a model-based configuration}. 
+% To clarify this assertion, let us focus on the following example, depicted in Figure \ref{tennis_example}. The first stage of this pipeline is to focus on the output base, i.e: the control part. In this case, we want the arm to be able to reach to specific positions within its available space. To do so, we can, if possible, write the equations for controlling the robot or learn a model of this task using model-free algorithms. Once this first stage is satisfied, we can move on to the higher level, which consists in solving the task, but relying on this newly created model as a tool to apprehend the world. In this view, it is very similar to the way humans learn and act, aggregating primitives into very complex behaviours.  \\ 
+
+The full UNN pipeline is actually composed of two to three parts. The bases, i.e, the parts that surround the UNN depend on the agent's body configuration. To reach the objective of transmission, we prevent gradients from flowing through the full model, and we instead train the different model parts separately. The prime advantage of this staged training is to ideally make the central part, the UNN, model-agnostic. In practice, we consider that the information needed to succeed in the task is composed of two type of data: Intrinsic data to the agent, called $s^i$ and data that is specific to the task, called $s^t$. Similarly to \cite{UNN}, \cite{TREX_RL}, we do not feed this entire vector to the model. Instead, the intrisic part $s^i$ is used by the bases for context-processing and the task related vector $s^t$ is used by the UNN for higher-level processing. While the input base gets only the intrinsic part, the output base processes stacks it with the UNN output for computing the action. A visual explanation of the pipeline can be seen in Figure \ref{pipeline}. 
+
+
+\begin{figure}
+\centering
+\includegraphics[width=0.45\textwidth]{imgs/archiv2bis.png}
+\caption{Pipeline}
+\label{pipeline}
+\end{figure}
+
+
+\begin{figure}
+\centering
+\includegraphics[width=0.45\textwidth]{imgs/training_process.png}
+\caption{Training process}
+\label{training_process}
+\end{figure}
+
+
+
+%  The UNN pipeline can be composed of two to three module, depending on whether the two bases surrounding the UNN are necessary. 
+
+% \begin{figure}
+% \centering
+% \includegraphics[width=0.45\textwidth]{imgs/archiv2bis.png}
+% \caption{Architecture}
+% \label{archi}
+% \end{figure}
+
+
+
+% \textcolor{red}{\uppercase{Mettre les formules}. Expliquer que UNN reçoit information de la tâche, sans se préocupper du modèle. Dans related works, dire que T-Rex fait la même chose}.
+
+
+
+\section{Experiments with classical pipeline} % (fold)
+\label{sec:experiments}
+
+This section focuses on detailing the training process and its application in various environments/tasks settings. In order to demonstrate the versatility of our method, we show that it is possible to repurpose a robotic arm for various tasks and that the knowledge gained using this configuration can be used with very little retraining by other agents configurations. \uppercase{Mettre photos des robots et du transfer}. In these applications, we've trained our agents using Proximal Policy Optimization (PPO) \cite{PPO}, a state-of-the-art reinforcement algorithm, but the principle of our method is compatible with other training processes. As our main agent is usually a ??? 
+Mentionner le transfert, qui est un peu le point d'orgue du taf. 
+
+% The first step is to create a model able to control the arm, with enough accuracy and in a predictable manner. 
+
+% In this part, explain how the UNN can be trained using a pre-trained base. ie: First, train the base to do a specific task that should be representative of the movement it is likely to perform later. Then, train the UNN using this base. Argue that the UNN learns within the capabilities of the base. Also, while very cool, this method implies a fine-tuning of other bases when passing the UNN configurations. While training yields similar performance level in a much shorter time, it is unreliable without retraining. Explain that the drawback of this method is that the agent might take advantage of the body's geometry for learning (exemple: use cylinder joints to hold the plank in collaborative plank rising).
+
+% To demonstrate the suitability of our framework, we introduce several reinforcement learning environments for teaching, testing our agents. In these environments, we also show the transmissions of various learned UNN between robots of different configurations.\\
+
+\subsection{Reacher} % (fold)
+\label{sub:reacher}
+
+
+The reaching task is a fundamental piece in our framework, since most of the experiments will require the agent to have mastered this skill. However, while seemingly very basic, an agent trained with a reward depending solely on the distance between its effector and the target very rarely yields a policy with plausible behaviour. Most of the time, this kind of reward function results in an policy with unexpected behaviour at best, and unstable at worse. Hence, to avoid this drawback of reinforcement learning, we take advantages of various insights from \cite{PPOAcrobatics} and we propose the following MDP for learning: 
+\begin{itemize}
+    \item $s_t \in \mathcal{S}$: Joints angles, vector from effector to target 
+    \item $a_t \in \mathcal{A}$: Joints target position
+    \item $R_t$: Distance between current agent configuration and ideal configuration given by a state-of-the-art method, such as \cite{BioIK}
+  \end{itemize}  
+
+Substituing the reward signal by allows for a much better control over the policy and in this specific case, helps overcome the initial bias the policy might get from weights initialization. The network architecture for the arms consists of an input layer with $n_i = ???$ units, two hidden layers of $n_h = 64$ units and a final layer with $n_f = ?$ units. We use hyperbolic tangent as the activation function and we train the agent for 1 million time-steps. Once the reacher is trained, it is possible to rely on it to move on to more complex tasks. We repeat this process for various robot configurations. \uppercase{Image des robots} %However, it is interesting to note that the UNN is also compatible with analytical models or other controllers type
+
+\begin{figure}
+\centering
+\includegraphics[width=0.45\textwidth]{imgs/reward_reacher.png}
+\caption{Substituing reacher reward signal for more excepectable behaviour. COMPLETER IMAGE POUR COMPARER AVEC ANCIENNE APPROCHE}
+\label{transfer0}
+\end{figure}
+
+
+\subsection{Tennis} % (fold)
+\label{sub:tennis}
+
+We begin our experiments with an environment involving a single arm. This task consist of self-play in a tennis-like setting. A paddle effector is attached at the last joint of a robotic arm and the goal is to maximize the number of time the ball bounces against the wall. In this task, we rely on the UNN to control the output base that itself controls the arm, as can be seen in Figure \ref{tennis_logic}. Formally, the tennis environment can be described by the following MDP: 
+
+\begin{itemize}
+    \item $s_t \in \mathcal{S}$: Effector position, orientation and speed, ball position and speed, body offset.
+    \item $a_t \in \mathcal{A}$: Body offset increment, joints speeds. 
+    \item $R_t$: $+1$ on contacts. 
+  \end{itemize}  
+
+The episode terminates whenever the ball drops below a height threshold. 
+In figure \ref{transfer0}, we display various learning curve, comparing the learning speed of a classic PPO approach, the UNN based-approach, and another UNN-controlled agent, but with a different configuration. As expected, given that the UNN benefits from the pretrained arm, their learning performances are higher than classic PPO, even if final performance for the UNN is slightly better. However, the most important aspect lies within the transfer stage. Indeed, when transfering the UNN to another robot configuration, it is possible to recover the final performances in a fraction of the previous training time, here around 15\% (red curve), while using classic approach, training performances starts from scratch again (green curve). Finally, in Table \ref{tennis_final}, we compare final performances at test time: To do so, we count the number of bounces over 100 episodes.  
+%  We present two configurations: 
+% \begin{itemize}
+%     \item Configuration A: No input base. Intrinsic informations are fed directly to the 
+%     \item Configuration B: Using an input base that translates stacked images to 
+% \end{itemize}
+
+% The agent controls the paddle speed and target orientation. These informations are then used by the trained base to compute its motor speed. To incite the agent to play, we rely on a reward function that returns a positive reward each time the ball touches the paddle or the wall. In this classical setting, we rely on a pretrained reacher agent. We then have a MDP where the states are a 18 dimensions vector, describing ball and effector speed and position in a world frame, along with the current global arm offset and effector orientation. To interact with the world, the UNN returns a 9 dimensions action vector composed of expected effector offset, expected effector orientation and global offset. Finally, as explained the reward function is as follows: 
+% \[
+% r_t = \begin{cases}
+%   \alpha & \text{on ball contact}\\ 
+%   0 & \text{else}
+% \end{cases}
+% \]  with $\alpha > 0 $. A termination flag is set whenever the ball's height is below a preset threshold. 
+
+
+\begin{figure}
+\centering
+\includegraphics[width=0.49\textwidth]{imgs/tennis_logic.png}
+\caption{Tennis logic}
+\label{tennis_logic}
+\end{figure}
+
+
+
+\begin{figure}
+\centering
+\includegraphics[width=0.49\textwidth]{imgs/TennisCurves_0.pdf}
+\caption{Tennis: Transfering UNN for tasks results in fast performance recovery}
+\label{transfer0}
+\end{figure}
+
+
+\begin{table}[]
+\centering
+\caption{Tennis: Final performances comparaisons}
+\label{tennis_final}
+\begin{tabular}{ccccc}
+                     & Max                  & Min                  & Mean                 & Std                  \\
+                     \hline
+Naive PPO            & 8                    & 0.                    & 3.15                    & 2.64                    \\
+UNN                  & 35                   & 0.                    & 18.74                    & 5.98                   \\ 
+Transfer PPO            & 8                    & 0.                    & 3.15                    & 2.64                    \\
+Transfer UNN           & 8                    & 0.                    & 3.15                    & 2.64                    
+\end{tabular}
+\end{table}
+
+
+
+
+
+% \subsection{Comparaison with naive TL} % (fold)
+% \label{sub:comparaison_with_naive_tl}
+
+% To motivate further our approach and show its interests in regard of knowledge transmission, we display here curves for the tennis environment. In case A, we first train an agent in a straightforward approach. Then, we change the controlled robot, adapt the architecture and retrain. We show (I hope) that it doesn't work as well as when the model is segmented. 
+
+
+\subsection{Raise Plank} % (fold)
+\label{ssub:raise_plank}
+
+Robotic manipulation tasks are very common in industrial settings and robots involved in these setup are likely to suffer from parts decay. While the task stays the same, the controller may be affected by these issues and would require manual tuning. In this task, we wish to replicate this environment, in order to show the compatibility of our method with these problems and how fast it can be recalibrated to perform its task again. 
+This manipulation tasks consists of reaching to and raising a cubic object. The environment is composed of a fixed support for the plank, the plank itself and a robotic arm equipped of a gripper. Figure \ref{raise_plank_results} shows learning performances. In blue, UNN, in orange, UNN retrained with decayed base, in red, PPO, in green PPO with decay.   
+
+% \begin{itemize}
+%   \item Donner les conditions de reset
+%   \item Montrer courbes de récompense cumulative par épisode. 
+% \end{itemize}
+
+% Once the UNN is trained, we show that we can adapt the UNN when it is set with a new base but also quickly adapt the new base. The former approach is close to the usual instances of transfer learning in supervised learning. 
+
+\begin{figure}
+\centering
+\includegraphics[width=0.45\textwidth]{imgs/raise_plank_0.png}
+\caption{Raise plank task}
+\label{raise_plank}
+\end{figure}
+
+
+\subsection{Cooperative Move Plank} % (fold)
+\label{ssub:cooperative_move_plank}
+
+It is possible that a task requires a robot to move an object that is beyond the capabilities of a single robot, either due to its weight or its size. Co-manipulation tasks are difficult settings that usually require coordination between the two movers. We show that the UNN method is also able to tackle this kind of issues. \\
+\uppercase{Mettre image de codit avec les deux robots}.  
+The Cooperative Move Plank environment was designed to demonstrate the UNN relevance to co-manipulation tasks. It features two robotic arms, held by a tri-dimensional support which are tasked with moving a large plank from its support to another location. It can be described as the following MDP. The state is described by a vector holding informations about relative effector position, effector speed and orientation for both arms, the plank relative position, speed, orientation, the direction to the goal point and contacts signals. Actions for each arm is a vector of 9 dimensions for expected effector offset from base, target orientation and global offset. Finally, the reward function encourages both arms to reach for the plank using a negative reward propotional to distance when there are no contacts between the effectors and the plank, then a positive reward, inversely proportional to distance otherwise i.e:  
+\[
+r_t = \begin{cases}
+  -\alpha \times (D_1 + D_2) & \text{if} \sum_{i = 0}^2 c_i = 0\\
+  0 & \text{if} \sum_{i = 0}^2 c_i = 1 \\ 
+  \frac{\beta}{D_3}  & \sum_{i = 0}^2 c_i = 2
+\end{cases}
+\]  with $\alpha > 0 $, $D_i$ the distance between the effector $i$ and its target points, $c_i$, the contact value between effector $i$ and the plank  . Similarly as before, a termination flag is set whenever the plank is dropped below specified height. We provide visual description of the task in Figure \ref{comanip_schema}. \\
+
+
+\begin{figure}
+\centering
+\includegraphics[width=0.45\textwidth]{imgs/comanip_schema.png}
+\caption{Comanipulation of a large plank using UNN. COMPLETER IMAGE AVEC PHOTO 3D}
+\label{comanip_schema}
+\end{figure}
+
+
+The following figure shows initial learning curves and transfers.  
+
+\begin{figure}
+\centering
+\includegraphics[width=0.49\textwidth]{imgs/comanip_0.pdf}
+\caption{Transfering UNN for tasks results in fast performance recovery}
+\label{transfer0}
+\end{figure}
+
+
+
+\subsection{Walker} % (fold)
+\label{sub:walker}
+
+\uppercase{Do the walker part}
+
+\section{Experiments with HCL} % (fold)
+\label{sec:experiments_with_hcl}
+
+Relying on RL to find solutions for these problem does nevertheless come with some drawbacks. Indeed, unless the rewards is designed to cover every failure case, there are high probabilities that the agent might find and exploit any holes left in the optimization process. In particular, in various environments involving manipulations, the agent has a tendency to find ways to carry its tasks by sometimes leveraging its body configuration, which would then prevent transfering the UNN to other agents, given that the instructions now rely on specific physical attributes.  
+
+The \textit{classic} UNN approach presents various advantages (use SOTA method for control, for example). But, doing so influences learning based on what the SOTA base can do. This effect is even more noticeable if the base is learned through reinforcement learning. In these cases, while the UNN succeeds at learning the task, the behaviour may not look like what was expected. 
+
+To reduce this factor of unstability, we introduce the Heuristic Curriculum Learning. In this framework, we release most of the constraints that would have been instigated by the SOTA base. This results is a \textbf{notice}. It is basically a module that gives instruction while being completely model-agnostic. In most cases, this is sufficient. In the experiments, we show that it is still possible to adapt later the UNN if too many constraints were neglected.    
+
+% section experiments_with_hcl (end)
+
+% subsection walker (end)
+% subsection tennis (end)
+% subsection reacher (end)
+
+% section experiments (end)
+
+% The UNN approach stands somewhere in between model-free methods and model-based method. Indeed, the UNN training relies on domain knowledge, that is used as a tool by the agent to interact with the world, but, leaves the representation to be free within this domain. 
+% Model-free methods make no assumptions of the solution's form and are known for poor sample efficiency but also a better final performance compared to model-based. Indeed, the latter does provide hypothesis as to the model that should be used, increasing sample efficiency at the cost of expressiveness. 
+
+
+% Learning-based method have various advantages. However, given that they usually use random initialization and that we learn in randomly-sampled batches, it does not sound possible to predict how the optimization is going to structure the weights. Hence, most of the time, training a model on a task result in a black-box. Various works focus on interpreting connections between neurons (SHAP, LIME, SP-LIME, voir https://towardsdatascience.com/interpretability-of-deep-learning-models-9f52e54d72ab), but this is a post-training method that doesn't influence the distribution of knowledge in the model. 
+
+
+
+
+
+\section{Experiments} % (fold)
+\label{sec:experiments}
+
+
+
+% subsection comparaison_with_naive_tl (end)
+
+\subsection{Classic Experiments} % (fold)
+\label{sub:classic_experiments}
+
+
+
+
+% subsection heuristic_approach (end)
+\begin{itemize}
+  \item Tennis 2 
+  \item Transport plank 
+  \item Vaiselle ? 
+\end{itemize}
+
+\section{Related Works} % (fold)
+\label{sec:related_works}
+(Dire que le transfert learning est courant dans CV et NLP mais pas vraiment en RL. Pourquoi ? Parce qu'en RL les réseaux sont généralement plus petits et il est difficile de savoir ou est le controle. On utilise donc des stragéties alternatives en RL. De là, détailler les stratégies alternatives, montrer progressivement pourquoi l'UNN est intéressant. )
+Being able to create models that can embed various skills or that are able to adapt quickly to changing environments \textcolor{red}{(segment knowledge, quickly readapt...)} has been the focus point of several recent works, particuarly in RL. 
+
+Pour justifier HCL, expliquer qu'utiliser des heuristiques est classiques dans des algorithmes de SOTA, style A*. 
+
+Indeed, even though robusts algorithms \cite{PPO}, \cite{SAC2018} and control strategies have shown impressive results in complex, high dimensional non-linear environments, these policies do not generalize well oustide of the training distribution, resulting in poor performance when deployed to other environments, in particular, the physical world. Bridging the gap between simulation and reality is an active research area, in which various approaches are investigated from two points of views. First, some works consider the technical differences between simulation and reality, such as noise in sensors, photogrammerty in vision and aim to anticipate. To mitigate these issues, \textcolor{green}{\cite{OpenAIDomainRandomization}} trains a policy in a simulated world with a full panel of image post-processing, this reducing the policy sensitivity to world lighting and texturing condition. Another approach is the one presented in \cite{TossingBot} where the goal is to have a robot learn to toss arbitrary objects through trial and error. In this case, the \textcolor{red}{expliquer rapidement le principe}. Also, meta-learning ?. We propose an altenative to these approaches, inspired by the way human share knowledge with one another. We propose to construct models of skills that can be freely shared with other agents provided minimum skills and with little to no retraining. Expliquer les avantages de la méthode par rapport aux autres approches. Essayer de tout mélanger. ie: éviter d'avoir un paragraphe sur les autres et un paragraphe sur nous.  
+
+% randomize This drawback is proeminent in model-free approches, where the action is directly tied to the agent's perception. In order to increase the robustness of a policy against change in the distribution,     
+
+% Model-based techniques rely on the creation of a world's model that is then used by the agent to plan its actions Model-based RL create a model of the environment, using its previous experiences. The two main approaches in RL  
+
+% Firstly, it is possible to consider most of model-based reinforcement learning approach as instances of knowledge segmentation. Indeed, using domain-knowledge enables the trained model to focus on parts where the underlying dynamics might be difficult to solve, or where ideal behaviour is complicated to identify. For instance \textcolor{green}{citer les travaux de Chelsea Finn de Berkeley et finir sur le souci récurrent des model-based: manque d'expressivité qui bloque les performances au bout d'un certain seuil}. Bridging the gap between simulation and reality is an active research area, in which various approaches are investigated from two point of views. First, some works consider the technical differences between simulation and reality, such as noise in sensors, photogrammerty in vision. To mitigate these issues, \textcolor{green}{\cite{OpenAIDomainRandomization}. Penser à d'autres exemples}. Another consideration is \textcolor{red}{parler des motivations de Residual Learning de Berkeley}. In \textcolor{green}{citer Berkeley}, the model is provided with some domain-knowledge, that is corrected by the model to provide accurate launch trajectories, in a residual manner. The results aimed at with this current work are close to those exposed in \textcolor{green}{citer berkeley sur meta online}. Indeed, in this work relying on meta-learning, the authors show that they can quickly adapt the behaviour of an agent should this one encounter different conditions that the ones it was trained on. \textcolor{red}{Finir en expliquant ce qu'il manque dans ces travaux et pourquoi le notre est intéressant}.  \\
+
+
+\textbf{Il manque:} 
+\begin{itemize}
+  \item Les travaux sur l'ontologie
+  \item Quelques mots sur le transfert
+  \item MultiPolicy T-rex
+\end{itemize}
+
+
+
+\section{CONCLUSIONS}
+
+A conclusion section is not required. Although a conclusion may review the main points of the paper, do not replicate the abstract as the conclusion. A conclusion might elaborate on the importance of the work or suggest applications and extensions. 
+
+\addtolength{\textheight}{-12cm}   % This command serves to balance the column lengths
+                                  % on the last page of the document manually. It shortens
+                                  % the textheight of the last page by a suitable amount.
+                                  % This command does not take effect until the next page
+                                  % so it should come on the page before the last. Make
+                                  % sure that you do not shorten the textheight too much.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{APPENDIX}
+
+Appendixes should appear before the acknowledgment.
+
+\section*{ACKNOWLEDGMENT}
+
+This work has been sponsored by the French government research program Investissements d'avenir through the RobotEx Equipment of Excellence (ANR-10-EQPX-44) and the IMobS3 Laboratory of Excellence (ANR-10-LABX-16-01), by the European Union through the program of Regional competitiveness and employment 2007-2013 (ERDF – Auvergne region), by the Auvergne region and by French Institute for Advanced Mechanics. 
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+References are important to the reader; therefore, each citation must be complete and correct. If at all possible, references should be commonly available publications.
+
+
+
+% \begin{thebibliography}{99}
+
+\bibliographystyle{acm}
+\bibliography{./../Biblio/biblio}
+
+
+
+% \end{thebibliography}
+
+
+
+
+\end{document}
