@@ -13,17 +13,16 @@ Animating a face is a rather complex task. From what I've learned so far, it app
 1. Lattice-controlled deformations. 
 1. Additional bones for more specific or local deformation. 
 
-I found really useful workflow advives in the Packt book **Blender Character Animation Cookbook** and I managed to create my first facial rig, which is showcased [here](https://www.youtube.com/watch?v=1ktlyoOD3oU). 
+I found really useful workflow advives in the book **Blender Character Animation Cookbook** and I managed to create my first facial rig, which is showcased [here](https://www.youtube.com/watch?v=1ktlyoOD3oU). 
 
 # Easin' the workflow 
 
 Getting the first result, especially with lattices was really encouraging. Having done only body animation so far, I had very low expectations concerning the quality of my rig, but, as I matter of fact, I was rather pleased with what resulted from this. This however was only a draft and, once the first-time enthousiasm gone, I realized that the workflow inherent to facial rig preparation was rather tedious and repetitive, yielding an absurd number of clicks to get things done. That is: 
 
-|            | Fun part                        | Boring part                                                                  |
-|------------|---------------------------------|------------------------------------------------------------------------------|
-| Shape Keys | Creating the shape keys         |  Mirroring shape keys Assigning vertex groups as masks                       |
-| Lattice    | Placing the bones for hooks (?) |  For each bone, creating the hook, selecting target, assigning lattice point |
-
+|            |             Fun part            |                                 Boring part                                 |
+|------------|:-------------------------------:|:---------------------------------------------------------------------------:|
+| Shape Keys | Creating the shape keys         | Mirroring shape keys Assigning vertex groups as masks                       |
+|   Lattice  | Placing the bones for hooks (?) | For each bone, creating the hook, selecting target, assigning lattice point |
 Thus, I created two Blender addons for automating this process. 
 
 1. MirrorSK_Operator. Create your shape keys, your vertex groups, call the script and pouf, everthing is mirrored with specific groups assigned.
